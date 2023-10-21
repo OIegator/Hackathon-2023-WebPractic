@@ -1277,7 +1277,8 @@
 		<rect x="0" y="0" width="100%" height="100%" fill="url(#spooky)"></rect>
 	</svg>
 </div>
-<div class="article-head">
+@if (@Model.Article == null){
+	<div class="article-head">
 	<textarea asp-for="@Model.Author" id="article-author" placeholder="Автор статьи" class="form-control custom-input-h3" rows="1"></textarea>
 </div>
 <div class="article">
@@ -1291,7 +1292,28 @@
 			<div asp-for="@Model.Article" id="article-text" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this)"></div>
 		</div>
 	</form>
-</div>
+	</div>
+} else {
+	<div class="article-head">
+		<h3>@Model.Title</h3>
+	</div>
+	<div class="article">
+
+		<h1>@Model.Title</h1>
+		<div class="date">@Model.publication_time.Value.ToString("d MMMM yyyy")</div>
+		@if (!string.IsNullOrEmpty(Model.Subtitle))
+		{
+			<h2>@Model.Subtitle</h2>
+		}
+
+		<div class="article-text">
+			 @Html.Raw(@Model.Article)
+		</div>
+	</div>
+}
+
+
+
 @if (@Model.Article == null)
 {
 	<div class="submition">
