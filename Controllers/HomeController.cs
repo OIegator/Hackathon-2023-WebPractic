@@ -1,4 +1,5 @@
-﻿using Hackathon.Models;
+﻿using Hackathon.Data;
+using Hackathon.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +8,18 @@ namespace Hackathon.Controllers
 	public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
+        private readonly DBContext db;
 
-		public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, DBContext _db)
 		{
+			db = _db;
 			_logger = logger;
 		}
 
 		public IActionResult Index()
 		{
-			Articles article = new Articles();
+            Articles article = new Articles();
 			return View(article);
 		}
 

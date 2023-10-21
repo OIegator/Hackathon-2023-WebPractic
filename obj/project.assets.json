@@ -2621,19 +2621,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\olegs\\.nuget\\packages\\": {}
+    "C:\\Users\\PavelK\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\olegs\\VisualStudioProjects\\Hackathon\\Hackathon.csproj",
+      "projectUniqueName": "D:\\dotnet\\Hackathon.csproj",
       "projectName": "Hackathon",
-      "projectPath": "D:\\Users\\olegs\\VisualStudioProjects\\Hackathon\\Hackathon.csproj",
-      "packagesPath": "C:\\Users\\olegs\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\olegs\\VisualStudioProjects\\Hackathon\\obj\\",
+      "projectPath": "D:\\dotnet\\Hackathon.csproj",
+      "packagesPath": "C:\\Users\\PavelK\\.nuget\\packages\\",
+      "outputPath": "D:\\dotnet\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\olegs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\PavelK\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
