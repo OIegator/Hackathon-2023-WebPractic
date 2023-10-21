@@ -1,0 +1,68 @@
+﻿@model Hackathon.Models.Articles
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="article-head">
+    <textarea asp-for="@Model.Author" placeholder="Автор статьи" class="form-control custom-input-h3" rows="1"></textarea>
+</div>
+<div class="article">
+    <form method="post">
+        <textarea asp-for="@Model.Title" placeholder="Заголовок статьи" class="form-control custom-input-h1" rows="1"></textarea>
+        <div class="date">@DateTime.Today.ToString("d MMMM yyyy")</div>
+
+        <textarea asp-for="@Model.Subtitle" placeholder="Подзаголовок" class="form-control custom-input-h2" rows="1"></textarea>
+
+        <div class="article-text">
+            <div asp-for="@Model.Article" id="article-text" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this)"></div>
+        </div>
+    </form>
+</div>
+<div class="submition">
+    <button type="submit" class="btn custom-button">Опубликовать</button>
+</div>
+<div class="options">
+    <form class="color-picker" action="">
+        <input type="radio" name="theme" id="light" checked />
+        <input type="radio" name="theme" id="dark" />
+        <input type="radio" name="theme" id="blue" />
+    </form>
+    <!-- Text Format -->
+    <button id="bold" class="option-button format">
+        <i class="fa-solid fa-bold"></i>
+    </button>
+    <button id="italic" class="option-button format">
+        <i class="fa-solid fa-italic"></i>
+    </button>
+    <!-- List -->
+    <button id="insertOrderedList" class="option-button">
+        <div class="fa-solid fa-list-ol"></div>
+    </button>
+    <button id="insertUnorderedList" class="option-button">
+        <i class="fa-solid fa-list"></i>
+    </button>
+    <!-- Link -->
+    <button id="createLink" class="adv-option-button">
+        <i class="fa fa-link"></i>
+    </button>
+    <button id="unlink" class="option-button">
+        <i class="fa fa-unlink"></i>
+    </button>
+    <!-- Alignment -->
+    <button id="justifyLeft" class="option-button align">
+        <i class="fa-solid fa-align-left"></i>
+    </button>
+    <button id="justifyCenter" class="option-button align">
+        <i class="fa-solid fa-align-center"></i>
+    </button>
+    <button id="justifyRight" class="option-button align">
+        <i class="fa-solid fa-align-right"></i>
+    </button>
+    <button id="justifyFull" class="option-button align">
+        <i class="fa-solid fa-align-justify"></i>
+    </button>
+    <!-- Quote -->
+    <button id="quote" class="option-button format">
+        <i class="fa-solid fa-quote-left"></i>
+    </button>
+</div>
