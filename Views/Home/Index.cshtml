@@ -4,14 +4,14 @@
 }
 
 <div class="article-head">
-    <textarea asp-for="@Model.Author" placeholder="Автор статьи" class="form-control custom-input-h3" rows="1"></textarea>
+    <textarea asp-for="@Model.Author" id="article-author" placeholder="Автор статьи" class="form-control custom-input-h3" rows="1"></textarea>
 </div>
 <div class="article">
     <form method="post">
-        <textarea asp-for="@Model.Title" placeholder="Заголовок статьи" class="form-control custom-input-h1" rows="1"></textarea>
+        <textarea asp-for="@Model.Title" placeholder="Заголовок статьи" id="article-title" class="form-control custom-input-h1" rows="1"></textarea>
         <div class="date">@DateTime.Today.ToString("d MMMM yyyy")</div>
 
-        <textarea asp-for="@Model.Subtitle" placeholder="Подзаголовок" class="form-control custom-input-h2" rows="1"></textarea>
+        <textarea asp-for="@Model.Subtitle" id="article-subtitle" placeholder="Подзаголовок" class="form-control custom-input-h2" rows="1"></textarea>
 
         <div class="article-text">
             <div asp-for="@Model.Article" id="article-text" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this)"></div>
@@ -19,7 +19,7 @@
     </form>
 </div>
 <div class="submition">
-    <button type="submit" class="btn custom-button">Опубликовать</button>
+    <button type="submit" id="btn-submition" class="btn custom-button">Опубликовать</button>
 </div>
 <div class="options">
     <form class="color-picker" action="">
@@ -66,3 +66,32 @@
         <i class="fa-solid fa-quote-left"></i>
     </button>
 </div>
+<script>
+
+    async function publishArticleAsync() {
+
+        const formData = new FormData();
+        formData.append("grant_type", "password");
+        formData.append("author", document.getElementById("article-author").value);
+        formData.append("title", document.getElementById("article-title").value);
+        formData.append("subtitle", document.getElementById("article-subtitle").value);
+        formData.append("text", document.getElementById("article-text").innerHTML);
+
+   
+        const response = await fetch("/publish", {
+            method: "POST",
+            headers: { "Accept": "application/json" },
+            body: formData
+        });
+ 
+        const data = await response.json();
+
+
+    };
+
+    document.getElementById("btn-submition").addEventListener("click", e => {
+        e.preventDefault();
+        publishArticleAsync();
+    });
+
+</script>
