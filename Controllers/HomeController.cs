@@ -38,6 +38,10 @@ namespace Hackathon.Controllers
 				return NotFound();
 			}
 			var articles = db.Articles;
+			foreach (var article in articles)
+			{
+				Console.WriteLine(article.Article);
+			}
 			Console.WriteLine(author);
 			Console.WriteLine(title);
 			Console.WriteLine(subtitle);
@@ -49,8 +53,9 @@ namespace Hackathon.Controllers
 			newArticle.Subtitle = subtitle;
 			newArticle.Article = text;
 			newArticle.publication_time = DateTime.Now;
-		
-   
+          //  db.Articles.Add(newArticle);
+           // db.SaveChanges();
+            Console.WriteLine("Успешный успех");
             return Ok();
         }
 
