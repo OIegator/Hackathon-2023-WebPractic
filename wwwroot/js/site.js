@@ -140,13 +140,13 @@ document.addEventListener('selectionchange', () => {
 
 // Handle clearing and restoring placeholder text.
 function clearPlaceholder(element) {
-    if (element.innerHTML === 'Start writing your article here') {
+    if (element.innerHTML === 'Начните писать свою статью здесь') {
         element.innerHTML = '';
     }
 }
 
 function restorePlaceholder(element) {
     if (element.innerHTML === '') {
-        element.innerHTML = 'Start writing your article here';
+        element.innerHTML = 'Начните писать свою статью здесь';
     }
 }

@@ -8,31 +8,47 @@
     --clr-accent: #939393;
     --clr-article-bg: #ffffff;
     --clr-quote: #555555;
+    --clr-patterns: #464646;
 }
 
-    :root:has(#dark:checked) {
-        --clr-body-bg: #0D100F;
-        --clr-text: #ffffff;
-        --clr-h1: #F0F0F0;
-        --clr-h2: #BDBDBD;
-        --clr-h3: #89A89D;
-        --clr-variation: #4a5b55;
-        --clr-accent: #89A89D;
-        --clr-article-bg: #181D1C;
-        --clr-quote: #c7f4e4;
-    }
+:root:has(#dark:checked) {
+    --clr-body-bg: #0D100F;
+    --clr-text: #ffffff;
+    --clr-h1: #F0F0F0;
+    --clr-h2: #BDBDBD;
+    --clr-h3: #89A89D;
+    --clr-variation: #4a5b55;
+    --clr-accent: #89A89D;
+    --clr-article-bg: #181D1C;
+    --clr-quote: #c7f4e4;
+    --clr-patterns: #4a5b55;
+}
 
-    :root:has(#blue:checked) {
-        --clr-body-bg: #0e1621;
-        --clr-text: #ffffff;
-        --clr-h1: #F0F0F0;
-        --clr-h2: #BDBDBD;
-        --clr-h3: #89A89D;
-        --clr-variation: #2b5278;
-        --clr-accent: #4686c4;
-        --clr-article-bg: #202b36;
-        --clr-quote: #4686c4;
-    }
+:root:has(#blue:checked) {
+    --clr-body-bg: #0e1621;
+    --clr-text: #ffffff;
+    --clr-h1: #F0F0F0;
+    --clr-h2: #BDBDBD;
+    --clr-h3: #89A89D;
+    --clr-variation: #2b5278;
+    --clr-accent: #4686c4;
+    --clr-article-bg: #202b36;
+    --clr-quote: #4686c4;
+    --clr-patterns: #203c57;
+}
+
+:root:has(#purple:checked) {
+    --clr-body-bg: #1b0e21;
+    --clr-text: #eb8e3f;
+    --clr-h1: #eb8e3f;
+    --clr-h2: #eb8e3f;
+    --clr-h3: #ff8300;
+    --clr-variation: 9f602b;
+    --clr-accent: #ff9400;
+    --clr-article-bg: #2c2036;
+    --clr-quote: #9f602b;
+    --clr-patterns: #b26700;
+}
 
 .color-picker input[type="radio"] {
     appearance: none;
@@ -58,6 +74,10 @@
 
     .color-picker input[type="radio"]#blue {
         --clr-radio: #0000cc;
+    }
+
+    .color-picker input[type="radio"]#purple {
+        --clr-radio: #6b4d92;
     }
 
 
@@ -101,29 +121,29 @@ body {
     position: relative;
 }
 
-    .article-head::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 0;
-        height: 0;
-        border-left: 45px solid transparent;
-        border-bottom: 45px solid var(--clr-body-bg);
-        transform: rotate(270deg);
-    }
+.article-head::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 45px solid transparent;
+    border-bottom: 45px solid var(--clr-body-bg);
+    transform: rotate(270deg);
+}
 
-    .article-head::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 5px;
-        height: 45px;
-        border-left: 45px solid transparent;
-        border-bottom: 45px solid var(--clr-accent);
-        transform: rotate(90deg);
-    }
+.article-head::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 45px;
+    border-left: 45px solid transparent;
+    border-bottom: 45px solid var(--clr-accent);
+    transform: rotate(90deg);
+}
 
 .article, .article-head, .submition {
     width: 80%;
@@ -161,26 +181,26 @@ h1 {
     word-wrap: break-word;
 }
 
-    .custom-input-h1:focus {
-        outline: none;
-        color: var(--clr-h1);
-        box-shadow: none;
-        background-color: var(--clr-article-bg);
-        caret-color: var(--clr-text);
-    }
+.custom-input-h1:focus {
+    outline: none;
+    color: var(--clr-h1);
+    box-shadow: none;
+    background-color: var(--clr-article-bg);
+    caret-color: var(--clr-text);
+}
 
 .date {
     color: var(--clr-h1);
 }
 
-    .date::before {
-        content: "";
-        display: block;
-        width: 96px;
-        height: 4px;
-        background-color: var(--clr-accent);
-        margin: 15px auto;
-    }
+.date::before {
+    content: "";
+    display: block;
+    width: 96px;
+    height: 4px;
+    background-color: var(--clr-accent);
+    margin: 15px auto;
+}
 
 
 h2 {
@@ -203,12 +223,12 @@ h2 {
     word-wrap: break-word;
 }
 
-    .custom-input-h2:focus {
-        outline: none;
-        color: var(--clr-h2);
-        box-shadow: none;
-        background-color: var(--clr-article-bg);
-    }
+.custom-input-h2:focus {
+    outline: none;
+    color: var(--clr-h2);
+    box-shadow: none;
+    background-color: var(--clr-article-bg);
+}
 
 h3 {
     font-size: 32px;
@@ -228,12 +248,12 @@ h3 {
     word-wrap: break-word;
 }
 
-    .custom-input-h3:focus {
-        outline: none;
-        color: var(--clr-accent);
-        box-shadow: none;
-        background-color: var(--clr-article-bg);
-    }
+.custom-input-h3:focus {
+    outline: none;
+    color: var(--clr-accent);
+    box-shadow: none;
+    background-color: var(--clr-article-bg);
+}
 
 
 .article-text {
@@ -249,12 +269,12 @@ h3 {
     border: none;
 }
 
-    .custom-input-article-text:focus {
-        text-align: justify;
-        border: none;
-        box-shadow: none;
-        outline: none;
-    }
+.custom-input-article-text:focus {
+    text-align: justify;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
 
 blockquote {
     position: relative;
@@ -265,15 +285,15 @@ blockquote {
 }
 
 
-    blockquote::before {
-        content: "";
-        position: absolute;
-        left: -4px;
-        top: 0;
-        width: 4px;
-        height: 100%;
-        background-color: var(--clr-accent);
-    }
+blockquote::before {
+    content: "";
+    position: absolute;
+    left: -4px;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--clr-accent);
+}
 
 textarea {
     resize: none;
@@ -289,16 +309,16 @@ textarea {
     text-align: right;
 }
 
-    .custom-button:hover {
-        background-color: var(--clr-variation);
-        color: var(--clr-article-bg);
-    }
+.custom-button:hover {
+    background-color: var(--clr-variation);
+    color: var(--clr-article-bg);
+}
 
-    .custom-button:focus {
-        background-color: var(--clr-variation);
-        color: var(--clr-article-bg);
-        box-shadow: none;
-    }
+.custom-button:focus {
+    background-color: var(--clr-variation);
+    color: var(--clr-article-bg);
+    box-shadow: none;
+}
 
 .options {
     position: fixed;
@@ -339,9 +359,9 @@ textarea {
     border-radius: 50%;
 }
 
-    .option-button:hover {
-        background-color: var(--clr-variation);
-    }
+.option-button:hover {
+    background-color: var(--clr-variation);
+}
 
 .adv-option-button {
     width: 30px;
@@ -350,4 +370,32 @@ textarea {
     color: var(--clr-article-bg);
     border: none;
     border-radius: 50%;
+}
+
+.patterns {
+    background-color: var(--clr-body-bg);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.st0 {
+    fill: none;
+    stroke: var(--clr-patterns);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+}
+
+.st1 {
+    fill: none;
+    stroke: var(--clr-patterns);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
 }
