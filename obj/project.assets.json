@@ -963,6 +963,19 @@
             "rid": "win"
           }
         }
+      },
+      "UnidecodeSharpCore/2.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/UnidecodeSharpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/UnidecodeSharpCore.dll": {
+            "related": ".xml"
+          }
+        }
       }
     }
   },
@@ -2612,12 +2625,28 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "UnidecodeSharpCore/2.0.1": {
+      "sha512": "WIuHpys52+IMczwrPGm2tbj2lztEZvi4TrK7Rn6Zc2kykdWt5hKrPCfp/RYmj7WgpAu/hfVj/K9HuoOOM3NqWA==",
+      "type": "package",
+      "path": "unidecodesharpcore/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/UnidecodeSharpCore.dll",
+        "lib/net45/UnidecodeSharpCore.xml",
+        "lib/netstandard2.0/UnidecodeSharpCore.dll",
+        "lib/netstandard2.0/UnidecodeSharpCore.xml",
+        "unidecodesharpcore.2.0.1.nupkg.sha512",
+        "unidecodesharpcore.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.EntityFrameworkCore >= 7.0.12",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.12"
+      "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.12",
+      "UnidecodeSharpCore >= 2.0.1"
     ]
   },
   "packageFolders": {
@@ -2666,6 +2695,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[7.0.12, )"
+          },
+          "UnidecodeSharpCore": {
+            "target": "Package",
+            "version": "[2.0.1, )"
           }
         },
         "imports": [

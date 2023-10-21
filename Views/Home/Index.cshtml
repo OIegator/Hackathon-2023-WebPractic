@@ -1288,7 +1288,7 @@
 		<textarea asp-for="@Model.Subtitle" id="article-subtitle" placeholder="Подзаголовок" class="form-control custom-input-h2" rows="1"></textarea>
 
 		<div class="article-text">
-			<div asp-for="@Model.Article" id="article-text" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this)">Начните писать свою статью здесь</div>
+			<div asp-for="@Model.Article" id="article-text" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this)"></div>
 		</div>
 	</form>
 </div>
@@ -1371,8 +1371,21 @@
 		};
 
 		document.getElementById("btn-submition").addEventListener("click", e => {
-		e.preventDefault();
-		publishArticleAsync();
+			e.preventDefault();
+			if (document.getElementById("article-title").value == '') {
+				alert('Пожалуйста, введите название статьи');
+				return;
+			} else if (document.getElementById("article-author").value == '') {
+				alert('Пожалуйста, введите имя автора');
+				return;
+			}
+			else if (document.getElementById("article-text").innerHTML == 'Начните писать свою статью здесь' || document.getElementById("article-text").innerHTML == '') {
+				console.log("article-text")
+				alert('Пожалуйста, введите текст статьи');
+				return;
+			}
+
+			publishArticleAsync();
 		});
 
 

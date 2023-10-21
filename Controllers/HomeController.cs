@@ -23,13 +23,14 @@ namespace Hackathon.Controllers
 
 		public IActionResult Index(Articles? article)
 		{
-
+            
 			if (article == null)
 			{
 				Articles article1 = new Articles();
                 return View(article1);
             }
 			else {
+                Console.WriteLine(" fdsg " + article.Article);
                 return View(article);
             }
          

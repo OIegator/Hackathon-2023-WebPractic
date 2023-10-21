@@ -156,3 +156,4 @@ D:\dotnet\obj\Debug\net6.0\refint\Hackathon.dll
 D:\dotnet\obj\Debug\net6.0\Hackathon.pdb
 D:\dotnet\obj\Debug\net6.0\Hackathon.genruntimeconfig.cache
 D:\dotnet\obj\Debug\net6.0\ref\Hackathon.dll
+D:\Users\olegs\VisualStudioProjects\Hackathon\bin\Debug\net6.0\UnidecodeSharpCore.dll
