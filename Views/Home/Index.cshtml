@@ -2,6 +2,7 @@
 @{
 	ViewData["Title"] = "Home Page";
 }
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
 <div class="patterns">
 	<svg width="100%" height="100%">
@@ -1320,11 +1321,11 @@
 		<button type="submit" id="btn-submition" class="btn custom-button">Опубликовать</button>
 	</div>
 	<div class="options">
-		<form class="color-picker" action="">
-			<input type="radio" name="theme" id="light" checked />
-			<input type="radio" name="theme" id="dark" />
-			<input type="radio" name="theme" id="blue" />
-			<input type="radio" name="theme" id="purple" />
+		<form class="color-picker" id="" action="">
+			<input type="radio" name="theme" id="light" value="light" checked />
+			<input type="radio" name="theme" id="dark" value="dark" />
+			<input type="radio" name="theme" id="blue" value="blue" />
+			<input type="radio" name="theme" id="purple" value="purple" />
 		</form>
 		<!-- Text Format -->
 		<button id="bold" class="option-button format">
@@ -1366,9 +1367,37 @@
 		</button>
 	</div>
 }
+
+
+
+
+<!-- Модальное окно -->
+<div class="modal fade" id="qrCodeModal" tabindex="-1" role="dialog" aria-labelledby="qrCodeModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="qrCodeModalLabel">Generated QR Code</h5>
+				<button type="button" class="close" data-dismiss="modal" data-toggle="modal" aria-label="Close" id="btnClose">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div>
+				</div>
+				<div class="form-group">
+					<img src="" class="img-thumbnail" id="QRImg" />
+				</div>
+				<a id="ModalLink" href="#" target="_blank">Ссылка на статью</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 @if (@Model.Article == null)
 {
 	<script>
+		var ArticleUrl = "";
 
 		async function publishArticleAsync() {
 
@@ -1378,6 +1407,7 @@
 		formData.append("title", document.getElementById("article-title").value);
 		formData.append("subtitle", document.getElementById("article-subtitle").value);
 		formData.append("text", document.getElementById("article-text").innerHTML);
+		formData.append("style", document.querySelector('input[name="theme"]:checked').value);
 
 
 		const response = await fetch("/publish", {
@@ -1388,6 +1418,16 @@
 		});
 
 		const data = await response.json();
+
+			if (response.ok === true) {
+				const form = document.querySelector("form")
+				$(document).ready(function () {
+					document.getElementById("QRImg").src = data.imgUrl;
+					ArticleUrl = data.url;
+					$('#ModalLink').attr('href', data.url);
+					$('#qrCodeModal').modal('show');
+				});
+			}
 
 
 		};
@@ -1410,6 +1450,16 @@
 			publishArticleAsync();
 		});
 
+
+		$(document).ready(function () {
+			$('#qrCodeModal').on('hidden.bs.modal', function () {
+				window.location.href = ArticleUrl;
+			});
+		});
+
+		document.getElementById("btnClose").addEventListener("click", function () {
+			window.location.href = ArticleUrl;
+		});
 
 	</script>
 };

@@ -9,6 +9,7 @@
         public string? Author { get; set; }
         public DateTime? publication_time { get; set; }
         public string? Link { get; set; }
+        public string? Style { get; set; }
 
         public void OnGet()
         {
