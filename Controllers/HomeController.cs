@@ -35,7 +35,6 @@ namespace Hackathon.Controllers
                 return View(article1);
             }
 			else {
-                Console.WriteLine(" fdsg " + article.Article);
                 return View(article);
             }
          
@@ -51,15 +50,9 @@ namespace Hackathon.Controllers
         public IActionResult Publish(string? author, string? title, string? subtitle, string? text, string? style)
         {
 			if (string.IsNullOrEmpty(author) || string.IsNullOrEmpty(title) ||  string.IsNullOrEmpty(text) || string.IsNullOrEmpty(style)) {
-				//todo всплывающее окно
 				return NotFound();
 			}
 		
-			Console.WriteLine(author);
-			Console.WriteLine(title);
-			Console.WriteLine(subtitle);
-			Console.WriteLine(text);
-			Console.WriteLine(style);
 			var newArticle = new Articles();
            // newArticle.Id = articles.Max(i=>i.Id+1);
             newArticle.Author = author;
@@ -71,15 +64,11 @@ namespace Hackathon.Controllers
 			newArticle.Link = GenerateLink(title, DateTime.Now);
             db.Articles.Add(newArticle);
             db.SaveChanges();
-            
-            Console.WriteLine("Успешный успех");
+
             return CreateQRCode(newArticle.Link);
         }
         public ActionResult Show(string articleUrl)
         {
-
-            Console.WriteLine($"articleUrl: {articleUrl}");
-
             var articles = db.Articles;
             Articles? neededArticle = articles.FirstOrDefault(a=> a.Link == articleUrl);
 			if (neededArticle == null) {
@@ -104,9 +93,9 @@ namespace Hackathon.Controllers
             return url;
         }
 
+		// транслит строки, изменение регистра, замена пробелов
         private string TransliterateAndSanitize(string input)
         {
-
             StringBuilder result = new StringBuilder();
             foreach (char c in input.ToLower().Unidecode())
             {
@@ -118,7 +107,6 @@ namespace Hackathon.Controllers
                     result.Append('-');
                 }
             }
-
             return result.ToString();
         }
 
@@ -126,7 +114,6 @@ namespace Hackathon.Controllers
 		public IActionResult CreateQRCode(string link)
 		{
 			string articleUrl = HttpContext.Request.Scheme + "://" + HttpContext.Request.Host.Value + "/article=" + link;
-
 			return Json(new {url = articleUrl });
 		}
 

@@ -1425,16 +1425,15 @@
 		formData.append("text", document.getElementById("article-text").innerHTML);
 		formData.append("style", document.querySelector('input[name="theme"]:checked').value);
 
-		console.log("111");
+
 		const response = await fetch("/publish", {
 		method: "POST",
 		headers: { "Accept": "application/json" },
 		body: formData
 
 		});
-		console.log("222");
+
 		const data = await response.json();
-			console.log("333");
 			if (response.ok === true) {
 				const form = document.querySelector("form")
 				$(document).ready(function () {
@@ -1465,7 +1464,6 @@
 				return;
 			}
 			else if (document.getElementById("article-text").innerHTML == 'Начните писать свою статью здесь' || document.getElementById("article-text").innerHTML == '') {
-				console.log("article-text")
 				alert('Пожалуйста, введите текст статьи');
 				return;
 			}
