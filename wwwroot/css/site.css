@@ -171,6 +171,8 @@ h1 {
     font-weight: bold;
     padding-top: 50px;
     text-transform: uppercase;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 .custom-input-h1 {
@@ -217,6 +219,8 @@ h2 {
     color: var(--clr-h2);
     padding: 20px;
     text-transform: uppercase;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 .custom-input-h2 {
@@ -247,6 +251,8 @@ h3 {
     font-weight: bold;
     color: var(--clr-h3);
     text-transform: uppercase;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 .custom-input-h3 {
