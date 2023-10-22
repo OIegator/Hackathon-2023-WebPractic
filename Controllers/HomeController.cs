@@ -60,7 +60,7 @@ namespace Hackathon.Controllers
         public ActionResult Show(string articleUrl)
         {
             var articles = db.Articles;
-            Articles? neededArticle = articles.FirstOrDefault(a=> a.Link == articleUrl);
+            Articles? neededArticle = articles.LastOrDefault(a=> a.Link == articleUrl);
 			if (neededArticle == null) {
 				return NotFound();
 			}
