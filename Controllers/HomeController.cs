@@ -1,11 +1,6 @@
 ﻿using Hackathon.Data;
 using Hackathon.Models;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using System.Security.Claims;
-using System.Text;
-using UnidecodeSharpCore;
 using IronBarCode;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -94,10 +89,5 @@ namespace Hackathon.Controllers
 			}
 		}
 
-			[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
-		{
-			return View();
-		}
 	}
 }
