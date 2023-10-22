@@ -1290,11 +1290,12 @@
 		<textarea asp-for="@Model.Subtitle" id="article-subtitle" placeholder="Подзаголовок" class="form-control custom-input-h2" rows="1"></textarea>
 
 		<div class="article-text">
-			<div asp-for="@Model.Article" id="article-text" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this)"></div>
+			<div asp-for="@Model.Article" id="article-text" contenteditable="true" onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this)">Начните писать свою статью здесь</div>
 		</div>
 	</form>
 	</div>
 } else {
+	<input type="radio" name="theme" id="@Model.Style" value="light" checked hidden/>
 	<div class="article-head">
 		<h3>@Model.Title</h3>
 	</div>

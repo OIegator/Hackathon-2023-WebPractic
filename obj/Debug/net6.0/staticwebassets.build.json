@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gfMFQTM8H+5ZTPMbbNme9LPauK5QAflHemqB8odD5Xk=",
+  "Hash": "SVHQzS3G2rQSm01t0ihc8uIRSpRIAP+YypJ5/3VTW8o=",
   "Source": "Hackathon",
   "BasePath": "_content/Hackathon",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Users\\olegs\\VisualStudioProjects\\Hackathon\\wwwroot\\GeneratedQRCode\\qrcode.png",
+      "SourceId": "Hackathon",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Users\\olegs\\VisualStudioProjects\\Hackathon\\wwwroot\\",
+      "BasePath": "_content/Hackathon",
+      "RelativePath": "GeneratedQRCode/qrcode.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\GeneratedQRCode\\qrcode.png"
     },
     {
       "Identity": "D:\\Users\\olegs\\VisualStudioProjects\\Hackathon\\wwwroot\\js\\site.js",
