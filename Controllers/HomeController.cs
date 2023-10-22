@@ -7,7 +7,8 @@ using System.Security.Claims;
 using System.Text;
 using UnidecodeSharpCore;
 using IronBarCode;
-
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Hackathon.Controllers
 {
@@ -126,38 +127,25 @@ namespace Hackathon.Controllers
 		{
 			string articleUrl = HttpContext.Request.Scheme + "://" + HttpContext.Request.Host.Value + "/article=" + link;
 
-			Console.WriteLine(articleUrl);
-			string imageUrl;
-			try
-			{
-				GeneratedBarcode barcode = QRCodeWriter.CreateQrCode(articleUrl, 200);
-		
-				barcode.SetMargins(10);
-				barcode.ChangeBarCodeColor(IronSoftware.Drawing.Color.Black);
-				string path = Path.Combine(webHostEnvironment.WebRootPath, "GeneratedQRCode");
-				if (!Directory.Exists(path))
-				{
-					Directory.CreateDirectory(path);
-				}
-				string filePath = Path.Combine(webHostEnvironment.WebRootPath, "GeneratedQRCode/qrcode.png");
-				barcode.SaveAsPng(filePath);
-				string fileName = Path.GetFileName(filePath);
-				imageUrl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}" + "/GeneratedQRCode/" + fileName;
-				ViewBag.QrCodeUri = imageUrl;
-				Console.WriteLine(imageUrl);
-			}
-			catch (Exception)
-			{
-				//todo что-то делать
-				return NotFound();
-			}
-			return Json(new {imgUrl = imageUrl, url = articleUrl });
+			return Json(new {url = articleUrl });
 		}
 
+		public ActionResult GenerateQRCode(string text)
+		{
+			GeneratedBarcode barcode = QRCodeWriter.CreateQrCode(text, 200);
 
+			barcode.SetMargins(10);
+			Bitmap bitmap = barcode.ToBitmap();
+			barcode.ChangeBarCodeColor(IronSoftware.Drawing.Color.Black);
+			using (MemoryStream stream = new MemoryStream())
+			{
+				bitmap.Save(stream, ImageFormat.Png);
+				return File(stream.ToArray(), "image/png");
+			}
+		}
 
-		//todo решить что делать
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+			//todo решить что делать
+			[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
 			return View();

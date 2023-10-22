@@ -10,6 +10,9 @@
     --clr-quote: #555555;
     --clr-patterns: #464646;
 }
+.custom-color {
+    background-color: #00ff90;
+}
 
 :root:has(#dark:checked) {
     --clr-body-bg: #0D100F;

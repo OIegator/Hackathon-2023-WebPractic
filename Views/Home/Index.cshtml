@@ -1297,7 +1297,7 @@
 } else {
 	<input type="radio" name="theme" id="@Model.Style" value="light" checked hidden/>
 	<div class="article-head">
-		<h3>@Model.Title</h3>
+		<h3>@Model.Author</h3>
 	</div>
 	<div class="article">
 
@@ -1394,6 +1394,16 @@
 	</div>
 </div>
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<head>
+	<link rel="stylesheet" type="text/css" href="~/css/site.css">
+</head>
+
+
+<div class="progress" style="display: none">
+	<div class="progress-bar custom-color" role="progressbar" style="width: 3%;" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
 
 @if (@Model.Article == null)
 {
@@ -1401,6 +1411,11 @@
 		var ArticleUrl = "";
 
 		async function publishArticleAsync() {
+
+			// Показать прогресс-бар с анимацией
+			$(".progress").show(1000, function () {
+				$(".progress-bar").css("width", "50%").attr("aria-valuenow", 50);
+			});
 
 		const formData = new FormData();
 		formData.append("grant_type", "password");
@@ -1410,20 +1425,27 @@
 		formData.append("text", document.getElementById("article-text").innerHTML);
 		formData.append("style", document.querySelector('input[name="theme"]:checked').value);
 
-
+		console.log("111");
 		const response = await fetch("/publish", {
 		method: "POST",
 		headers: { "Accept": "application/json" },
 		body: formData
 
 		});
-
+		console.log("222");
 		const data = await response.json();
-
+			console.log("333");
 			if (response.ok === true) {
 				const form = document.querySelector("form")
 				$(document).ready(function () {
-					document.getElementById("QRImg").src = data.imgUrl;
+
+					$(".progress-bar").css("width", "100%").attr("aria-valuenow", 100);
+					// Закрыть прогресс-бар после некоторой задержки
+					setTimeout(function () {
+						$(".progress").hide();
+					}, 1000);
+					document.getElementById("QRImg").src = "/Home/GenerateQRCode?text=" + data.url;
+
 					ArticleUrl = data.url;
 					$('#ModalLink').attr('href', data.url);
 					$('#qrCodeModal').modal('show');
@@ -1461,6 +1483,5 @@
 		document.getElementById("btnClose").addEventListener("click", function () {
 			window.location.href = ArticleUrl;
 		});
-
 	</script>
 };
