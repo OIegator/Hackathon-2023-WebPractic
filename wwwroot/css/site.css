@@ -423,3 +423,43 @@ textarea {
     stroke-linejoin: round;
     stroke-miterlimit: 10;
 }
+
+#qrCodeModal {
+    text-align: center; 
+}
+
+#QRImg {
+    display: block;
+    margin: 0 auto; 
+}
+
+#ModalLink {
+    display: block;
+    text-align: center; 
+    margin-top: 10px; 
+}
+
+.modal-content {
+    text-align: left; 
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    color: #000; 
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s; 
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close:hover {
+    color: #ff0000; 
+}
